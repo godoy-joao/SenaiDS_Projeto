@@ -5,26 +5,37 @@
  */
 package model.bean;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
  * @author Joao Guilherme
  */
 public class Pedido {
+
     private int idPedido;
     private int usuario;
     private int endereco_entrega;
-    private Date data_pedido;
+    private Timestamp data_pedido;
+    private float valor_total;
 
     public Pedido() {
     }
 
-    public Pedido(int idPedido, int usuario, int endereco_entrega, Date data_pedido) {
+    public Pedido(int idPedido, int usuario, int endereco_entrega, Timestamp data_pedido, float valor_total) {
         this.idPedido = idPedido;
         this.usuario = usuario;
         this.endereco_entrega = endereco_entrega;
         this.data_pedido = data_pedido;
+        this.valor_total = valor_total;
+    }
+
+    public float getValor_total() {
+        return valor_total;
+    }
+
+    public void setValor_total(float valor_total) {
+        this.valor_total = valor_total;
     }
 
     public int getIdPedido() {
@@ -51,12 +62,12 @@ public class Pedido {
         this.endereco_entrega = endereco_entrega;
     }
 
-    public Date getData_pedido() {
+    public Timestamp getData_pedido() {
         return data_pedido;
     }
 
-    public void setData_pedido(Date data_pedido) {
+    public void setData_pedido(Timestamp data_pedido) {
         this.data_pedido = data_pedido;
     }
-    
+
 }

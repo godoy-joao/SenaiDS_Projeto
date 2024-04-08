@@ -10,15 +10,16 @@ import conexao.Conexao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import model.bean.Imagem;
+import model.bean.Produto;
 
 /**
  *
  * @author Joao Guilherme
  */
 public class ProdutoImagemDAO {
-    private void aaa() {
-        try {
+
+    /* try {
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
             ResultSet rs = null;
@@ -34,6 +35,24 @@ public class ProdutoImagemDAO {
         } catch (SQLException e) {
             e.printStackTrace();
                    
+        }
+     */
+    private void addImagem(Produto produto, Imagem imagem) {
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+
+            stmt = conexao.prepareStatement("INSERT INTO produto_imagem (produto, imagem) VALUES (?, ?)");
+            stmt.setInt(1, produto.getIdProduto());
+            stmt.setInt(2, imagem.getIdImagem());
+            stmt.executeUpdate();
+
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
         }
     }
 }
