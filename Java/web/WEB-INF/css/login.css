@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 06/04/2024, 17:02:18
+    Author     : joaog
+*/
+html {
+
+    color: white;
+}
+
+.font-color {
+    font-family: 'HK Grotesk';
+    color: white;
+    text-shadow: 1px 0 1px #000, 0 -1px 1px #000, 0 1px 1px #000, -1px 0 1px #000;
+}
+
+body {
+    background: radial-gradient(transparent 34%, #3C0753 35%, #3C0753 45%, transparent 46%), radial-gradient(circle at left, transparent 39%, #3C075380 40%, #3C075380 45%, transparent 46%), radial-gradient(circle at right, transparent 39%, #3C075380 40%, #3C075380 45%, transparent 46%);
+    background-size: 4em 4em;
+    background-color: #030637;
+
+}
+
+#div-main {
+    background: radial-gradient(circle, #910A67 10%, transparent 11%), radial-gradient(circle at bottom left, #910A67 5%, transparent 6%), radial-gradient(circle at bottom right, #910A67 5%, transparent 6%), radial-gradient(circle at top left, #910A67 5%, transparent 6%), radial-gradient(circle at top right, #910A67 5%, transparent 6%);
+    background-size: 2em 2em;
+    background-color: #720455;
+
+}

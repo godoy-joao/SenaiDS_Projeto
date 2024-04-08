@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.bean.Carrinho;
 import model.bean.CarrinhoProduto;
+import model.bean.Produto;
 import model.bean.Usuario;
 
 
@@ -24,23 +25,34 @@ import model.bean.Usuario;
  */
 public class CarrinhoDAO {
     
-    //Ainda em produção por ser complexo demais.
-    private List<CarrinhoProduto> read(Usuario u) {
-        Carrinho carrinho = new Carrinho();
-        List<CarrinhoProduto> produtos = new ArrayList();
+    /*
+    Esse método deve retornar todos os produtos de um usuário fornecido como
+    parâmetro, portanto deve ser chamado na página que exibe o carrinho.  
+    */
+    private List<Produto> lerProdutos(Usuario u) {
+        
+        List<Produto> produtos = new ArrayList();
         try {
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
             ResultSet rs = null;
             
-            stmt = conexao.prepareStatement("SELECT * FROM carrinho WHERE idCarrinho = ?");
+            stmt = conexao.prepareStatement("SELECT p.* FROM carrinho_produto AS cp JOIN produto AS p ON cp.produto = p.idProduto"
+                    + " JOIN carrinho AS c ON cp.carrinho = c.idCarrinho JOIN usuario AS u ON c.usuario = u.idUsuario WHERE u.idUsuario = ?");
             stmt.setInt(1, u.getIdUsuario());
             
-            if (rs.next()) {
-                carrinho.setIdCarrinho(rs.getInt("idCarrinho"));
-                carrinho.setUsuario(u.getIdUsuario());
-            }
+            rs = stmt.executeQuery();
             
+            while (rs.next()) {
+                Produto p = new Produto();
+                p.setIdProduto(rs.getInt("idProduto"));
+                p.setNome(rs.getString("nome"));
+                p.setValor(rs.getFloat("valor"));
+                p.setDesconto(rs.getFloat("desconto"));
+                p.setValorFinal(rs.getFloat("valorFinal"));
+                p.setCategoria(rs.getInt("categoria"));
+                produtos.add(p);
+            }
             
             rs.close();
             stmt.close();

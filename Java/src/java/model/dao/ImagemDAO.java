@@ -7,18 +7,30 @@ package model.dao;
 
 import com.mysql.jdbc.Connection;
 import conexao.Conexao;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import model.bean.Imagem;
 
 /**
  *
  * @author Joao Guilherme
  */
 public class ImagemDAO {
-    private void aaa() {
-        try {
+
+    /*
+    try {
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
             ResultSet rs = null;
@@ -35,5 +47,76 @@ public class ImagemDAO {
             e.printStackTrace();
                    
         }
+     */
+    public void insertImagem(File imagem) throws FileNotFoundException {
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+
+            FileInputStream inputStream = new FileInputStream(imagem);
+
+            stmt = conexao.prepareStatement("INSERT INTO imagem (imagem) VALUES (?)");
+            stmt.setBlob(1, inputStream);
+
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
     }
+
+    public Imagem getImagem(int id) {
+        Imagem img = new Imagem();
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+
+            stmt = conexao.prepareStatement("SELECT * FROM imagem WHERE id = ?");
+            stmt.setInt(1, id);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                img.setIdImagem(id);
+                img.setImagem(rs.getBlob("imagem"));
+            }
+
+            rs.close();
+            stmt.close();
+            conexao.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return img;
+    }
+
+    public ImageIcon blobToImage(Blob blob) throws SQLException, IOException {
+        byte[] imageBytes = blob.getBytes(1, (int) blob.length());
+        Image imagem = ImageIO.read(new ByteArrayInputStream(imageBytes));
+        ImageIcon img = new ImageIcon(imagem);
+        return img;
+    }
+
+    public void delete(int id) {
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+
+            stmt = conexao.prepareStatement("DELETE FROM imagem WHERE idImagem = ?");
+            stmt.setInt(1, id);
+
+            stmt.executeUpdate();
+
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
+
 }
