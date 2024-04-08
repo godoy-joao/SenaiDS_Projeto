@@ -73,6 +73,16 @@ public class PedidoDAO {
             stmt.setInt(1, u.getIdUsuario());
 
             rs = stmt.executeQuery();
+            while (rs.next()) {
+                Pedido p = new Pedido();
+                p.setIdPedido(rs.getInt("idPedido"));
+                p.setUsuario(rs.getInt("usuario"));
+                p.setEndereco_entrega(rs.getInt("endereco_entrega"));
+                p.setValor_total(rs.getFloat("valor_total"));
+                p.setData_pedido(rs.getTimestamp("data_pedido"));
+                pedidos.add(p);
+            }
+            
 
             rs.close();
             stmt.close();

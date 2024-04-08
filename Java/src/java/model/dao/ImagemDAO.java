@@ -19,9 +19,12 @@ import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import model.bean.Imagem;
+import model.bean.Produto;
 
 /**
  *
@@ -91,6 +94,33 @@ public class ImagemDAO {
             e.printStackTrace();
         }
         return img;
+    }
+
+    public List<Imagem> getImageList(Produto p) {
+        List<Imagem> imagens = new ArrayList();
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+
+            stmt = conexao.prepareStatement("SELECT i.* FROM imagem i "
+                    + "JOIN produto_imagem pi ON i.idImagem = pi.imagem WHERE pi.produto = ?");
+            
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Imagem i = new Imagem();
+                i.setIdImagem(rs.getInt("idImagem"));
+                i.setImagem(rs.getBlob("imagem"));
+                imagens.add(i);
+            }
+            
+            rs.close();
+            stmt.close();
+            conexao.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return imagens;
     }
 
     public ImageIcon blobToImage(Blob blob) throws SQLException, IOException {
