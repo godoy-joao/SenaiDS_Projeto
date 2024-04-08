@@ -12,18 +12,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.bean.Endereco;
 
-
 /**
  *
  * @author Joao Guilherme
  */
 public class EnderecoDAO {
-    
+
     public void create(Endereco end) {
         try {
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
-            
+
             stmt = conexao.prepareStatement("INSERT INTO endereco (estado, cidade, cep, rua, numero, complemento) values (?, ?, ?, ?, ?, ?)");
             stmt.setString(1, end.getEstado());
             stmt.setString(2, end.getCidade());
@@ -31,17 +30,35 @@ public class EnderecoDAO {
             stmt.setString(4, end.getRua());
             stmt.setString(5, end.getNumero());
             stmt.setString(6, end.getComplemento());
-            
+
             stmt.executeUpdate();
-                    
+
             stmt.close();
             conexao.close();
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
-                   
+
         }
-        
+
     }
-    
+
+    public void delete(Endereco end) {
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            
+            stmt = conexao.prepareStatement("DELETE FROM endereco WHERE idEndereco = ?");
+            stmt.setInt(1, end.getIdEndereco());
+            
+            stmt.executeUpdate();
+            
+            stmt.close();
+            conexao.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
+
 }
