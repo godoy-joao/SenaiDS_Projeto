@@ -17,16 +17,14 @@ body {
     align-content: center;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: #ffffff;
 }
 
 #formCadastro {
     background-color: #fff;
     border-radius: 7px;
-    padding: 40px;
-    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
-    gap: 5px;
+    box-shadow: 0.8rem 0.8rem 3rem rgba(0, 0, 0, 0.4);
 
 }
 
@@ -40,17 +38,17 @@ body {
 
 #formCadastro p {
     display: inline-block;
-    font-size: 14px;
+    font-size: 0.9rem;
     color: #666;
-    margin-bottom: 25px;
+    margin-bottom: 0.5rem;
 }
 
 #formCadastro input {
-    padding: 15px;
-    font-size: 14px;
+    padding: 0.4rem;
+    font-size: 1rem;
     border: 1px solid #ccc;
-    margin-bottom: 10px;
-    margin-top: 5px;
+    margin-bottom: 0.6rem;
+    margin-top: 0.1rem;
     border-radius: 4px;
     transition: all linear 160ms;
     outline: none;
@@ -62,19 +60,20 @@ body {
 }
 
 .formCadastro label {
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
 #btnSubmit {
     background-color: #2c2729;
     color: #fff;
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: 600;
     border: none !important;
     transition: all linear 160ms;
     cursor: pointer;
     margin: 0 !important;
+    height: 3rem;
 
 }
 

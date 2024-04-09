@@ -13,7 +13,7 @@
 <body class="">
     <main>
         <div class="d-flex flex-column align-content-center justify-content-center align-items-center h-100" id="containerCadastro">
-            <form id="formCadastro" action="" method="post" class="d-flex flex-column" style="width: 500px; box-shadow: 10px 10px 20px rgba(0,0,0, 0.4);">
+            <form id="formCadastro" action="" method="post" class="d-flex flex-column px-4 py-3 m-0" style="width: 500px; box-shadow: 10px 10px 20px rgba(0,0,0, 0.4);">
                 <h1>Cadastro</h1>
                 <p>Insira as informações para realizar o cadastro.</p>
                 <label for="#inputNome">Nome</label>
@@ -27,7 +27,7 @@
                 <label for="inputCPF">CPF</label>
                 <input type="text" id="inputCPF" class="input" placeholder="123.456.789-01" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" required>
                 <label for="inputTelefone">Telefone</label>
-                <input type="tel" id="inputTelefone" class="input" name="Telefone" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
+                <input type="tel" id="inputTelefone" class="input mb-3" name="Telefone" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
                     placeholder="(00) 90000-0000" required>
                     <input type="submit" value="Cadastrar" id="btnSubmit">
             </form>
