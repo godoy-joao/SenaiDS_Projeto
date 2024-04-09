@@ -15,3 +15,4 @@ function validarSenha() {
   }
 }
 senhaC.addEventListener('input', validarSenha);
+
