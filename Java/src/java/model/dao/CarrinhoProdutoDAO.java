@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package model.dao;
-
 import com.mysql.jdbc.Connection;
 import conexao.Conexao;
 import java.sql.PreparedStatement;
