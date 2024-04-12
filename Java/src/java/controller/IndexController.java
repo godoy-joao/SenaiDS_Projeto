@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +20,6 @@ import model.dao.ProdutoDAO;
  *
  * @author Senai
  */
-@WebServlet(name = "Controller", urlPatterns = {"/Controller"})
 public class IndexController extends HttpServlet {
 
     /**
@@ -35,11 +33,12 @@ public class IndexController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProdutoDAO produtoDao = new ProdutoDAO();
-        List<Produto> produtos = produtoDao.listarTodos();
-        
+
+        ProdutoDAO produtosDAO = new ProdutoDAO();
+        List<Produto> produtos = produtosDAO.listarTodos();
+
         request.setAttribute("produtos", produtos);
-        
+
         String nextPage = "/WEB-INF/jsp/index.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
@@ -57,11 +56,7 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        //String url = request.getContextPath();
-        //if (url == "/signup") {
-        //    
-        //}
+        processRequest(request, response);
     }
 
     /**

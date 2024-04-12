@@ -5,8 +5,8 @@
  */
 package model.dao;
 
-import com.mysql.jdbc.Connection;
 import conexao.Conexao;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,7 +43,9 @@ public class ProdutoDAO {
                 p.setValorFinal(rs.getFloat("valorFinal"));
                 produtos.add(p);
             }
-
+            System.out.println("--------------------------------------------------------------------");
+            System.out.println("Tamanho da Array: " + produtos.size());
+            System.out.println("--------------------------------------------------------------------");
             rs.close();
             stmt.close();
             conexao.close();
@@ -77,6 +79,9 @@ public class ProdutoDAO {
                 p.setValorFinal(rs.getFloat("valorFinal"));
                 produtos.add(p);
             }
+            System.out.println("--------------------------------------------------------------------");
+            System.out.println("Tamanho da Array: " + produtos.size());
+            System.out.println("--------------------------------------------------------------------");
 
             rs.close();
             stmt.close();

@@ -5,7 +5,9 @@
  */
 package conexao;
 
-import com.mysql.jdbc.Connection;
+
+
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -18,8 +20,19 @@ public class Conexao {
     private static final String URL = "jdbc:mysql://localhost:3306/banco_ds?useSSL=false";
     private static final String USER = "root";
     private static final String PASSWORD = "";
+    public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
+    // public static Connection conectar() throws SQLException {
+    //     return (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
+    // }
     public static Connection conectar() throws SQLException {
-        return (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
+        Connection conn = null;
+        try {
+            Class.forName(DRIVER);
+            conn = (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return conn;
     }
 }

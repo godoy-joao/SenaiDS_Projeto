@@ -16,13 +16,25 @@
         <servlet-name>SignupController</servlet-name>
         <servlet-class>controller.SignupController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controller </servlet-name>
+        <servlet-class>controller.IndexController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IndexController</servlet-name>
+        <servlet-class>controller.IndexController</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>Controller</servlet-name>
         <url-pattern>*.htm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SignupController</servlet-name>
         <url-pattern>/cadastrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndexController</servlet-name>
+        <url-pattern>/IndexController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

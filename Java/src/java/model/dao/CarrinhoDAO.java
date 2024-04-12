@@ -5,8 +5,9 @@
  */
 package model.dao;
 
-import com.mysql.jdbc.Connection;
+
 import conexao.Conexao;
+import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
