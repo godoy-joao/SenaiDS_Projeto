@@ -20,7 +20,6 @@ public class Conexao {
     private static final String URL = "jdbc:mysql://localhost:3306/banco_ds?useSSL=false";
     private static final String USER = "root";
     private static final String PASSWORD = "";
-    public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     // public static Connection conectar() throws SQLException {
     //     return (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
@@ -28,7 +27,7 @@ public class Conexao {
     public static Connection conectar() throws SQLException {
         Connection conn = null;
         try {
-            Class.forName(DRIVER);
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (Exception e) {
             e.printStackTrace();

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Senai
  */
-public class SignupController extends HttpServlet {
+public class LoginController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,8 +30,8 @@ public class SignupController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nextPage = "/WEB-INF/jsp/signup.jsp";
         
+        String nextPage = "/WEB-INF/jsp/login.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
     }
