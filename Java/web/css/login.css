@@ -20,20 +20,30 @@ body {
     opacity: 1
 }
 
-#formLogin {
-    background-color: #fff;
-    border-radius: 7px;
-    padding: 3rem;
-    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
-    
+#backToIndex {
+    color: #ffffff;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    font-size: 30px;
+    box-shadow: 0px 0px 4px 6px rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.6);
+    width: 2vw;
+    height: 2vw;
 }
 
-#formLogin label {
+.formWrapper {
+    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+    background-color: #fff;
+    border-radius: 7px;
+}
+
+.formContainer label {
     font-size: 14px;
     font-weight: 600;
 }
 
-#formLogin input {
+.formContainer input {
     padding: 0.4rem;
     font-size: 1.2rem;
     border: 1px solid #ccc;
@@ -44,7 +54,7 @@ body {
     outline: none;
 }
 
-#btnSubmit {
+.btnSubmit {
     background-color: #2c2729;
     color: #fff;
     font-size: 0.9rem;
@@ -56,9 +66,11 @@ body {
     height: 3rem;
 }
 
-#btnSubmit:hover {
+.btnSubmit:hover {
     transform: scale(1.05);
     background-color: black;
-
 }
 
+.btnSwitch {
+    background-color: transparent;
+}
