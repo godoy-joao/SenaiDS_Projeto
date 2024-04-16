@@ -1,14 +1,3 @@
-function toggleLogin() {
-    let element = document.getElementById('containerLogin');
-    element.classList.remove('d-none');
-    element.classList.add('d-flex');
-}
-function toggleCadastro() {
-    let element = document.getElementById('containerCadastro');
-    element.classList.toggle('d-none');
-    element.classList.toggle('d-flex');
-}
-
 function switchForms() {
     if ($('#containerLogin').hasClass('d-flex')) {
         document.title = "Cadastro"
@@ -19,10 +8,23 @@ function switchForms() {
         $("#containerCadastro").removeClass('d-flex').addClass('d-none');
         $("#containerLogin").removeClass('d-none').addClass('d-flex');
     }
-
+    var item = document.getElementById('inputNome');
+    console.log(item.value);
 }
-$("#inputTelefone").mask("(00) 90000-0000");
+$("#inputTelefone").mask("(00) 00000-0000");
 $("#inputCPF").mask("000.000.000-00");
-document.addEventListener("DOMContentLoaded", function () {
+let senha = document.getElementById('inputSenha');
+let senhaC = document.getElementById('inputConfirmaSenha');
 
-});
+function validarSenha() {
+  if (senha.value != senhaC.value) {
+    senhaC.setCustomValidity("Senhas diferentes!");
+    senhaC.reportValidity();
+    return false;
+  } else {
+    senhaC.setCustomValidity("");
+    return true;
+  }
+}
+senhaC.addEventListener('input', validarSenha);
+

@@ -43,9 +43,6 @@ public class ProdutoDAO {
                 p.setValorFinal(rs.getFloat("valorFinal"));
                 produtos.add(p);
             }
-            System.out.println("--------------------------------------------------------------------");
-            System.out.println("Tamanho da Array: " + produtos.size());
-            System.out.println("--------------------------------------------------------------------");
             rs.close();
             stmt.close();
             conexao.close();

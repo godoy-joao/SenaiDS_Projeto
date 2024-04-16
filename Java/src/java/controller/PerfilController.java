@@ -30,7 +30,7 @@ public class PerfilController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nextPage = "WEB-INF/jsp/perfil.jsp";
+        String nextPage = "/WEB-INF/jsp/perfil.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
     }

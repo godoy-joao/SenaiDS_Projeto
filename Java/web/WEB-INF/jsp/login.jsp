@@ -1,5 +1,4 @@
 <%-- Document : login Created on : 06/04/2024, 16:48:55 Author : Joao G --%>
-
     <%@page contentType="text/html" pageEncoding="UTF-8" %>
         <!DOCTYPE html>
         <html lang="en">
@@ -29,14 +28,12 @@
                             <h1 class="font-weight-bold">Login</h1>
                             <button onclick="switchForms()" class="btnSwitch border-0">Cadastre-se</button>
                         </div>
-                        <form id="formLogin" class="d-flex flex-column" action="" method="get" style="width: 30rem;">
-
-
+                        <form id="formLogin" class="d-flex flex-column" action="logar" method="get" style="width: 30rem;">
                             <p class="mb-3">Preencha os campos para realizar login.</p>
                             <label for="">E-mail</label>
-                            <input type="email" name="email" id="loginEmail" placeholder="seuemail@example.com">
+                            <input type="email" name="email" id="loginEmail" placeholder="seuemail@example.com" required>
                             <label for="">Senha</label>
-                            <input type="password" id="loginSenha" placeholder="Digite sua senha">
+                            <input type="password" id="loginSenha" name="senha" placeholder="Digite sua senha" required>
                             <button id="btnLogin" class="rounded-1 mt-3 btnSubmit">Acessar</button>
                         </form>
                     </div>
@@ -48,20 +45,20 @@
                             <h1 class="m-0">Cadastro</h1>
                             <button onclick="switchForms()" class="btnSwitch border-0">Login</button>
                         </div>
-                        <form id="formCadastro" action="" method="post" class="d-flex flex-column">
+                        <form id="formCadastro" action="cadastrar" method="post" class="d-flex flex-column">
                             <p>Insira as informações para realizar o cadastro.</p>
                             <label for="#inputNome">Nome</label>
-                            <input type="text" id="inputNome" placeholder="Digite seu nome." required>
+                            <input type="text" id="inputNome" name="inputNome" placeholder="Digite seu nome." required>
                             <label for="inputEmail">E-mail</label>
-                            <input type="email" id="signupEmail" placeholder="email@example.com" required>
+                            <input type="email" id="signupEmail" name="signupEmail" placeholder="email@example.com" required>
                             <label for="inputSenha">Senha</label>
-                            <input type="password" id="signupSenha" placeholder="Digite sua senha." required>
+                            <input type="password" id="signupSenha" name="signupSenha" placeholder="Digite sua senha." required>
                             <label for="inputConfirmaSenha">Confirme a senha</label>
                             <input type="password" id="signupConfirmaSenha" placeholder="Confirme sua senha." required>
                             <label for="inputCPF">CPF</label>
-                            <input type="text" id="inputCPF" placeholder="123.456.789-01" required>
+                            <input type="text" id="inputCPF" name="inputCPF" placeholder="123.456.789-01" required>
                             <label for="inputTelefone">Telefone</label>
-                            <input type="tel" id="inputTelefone" class="input mb-3" name="Telefone"
+                            <input type="tel" id="inputTelefone" class="input mb-3" name="inputTelefone"
                                 placeholder="(00) 90000-0000" required>
                             <button id="btnCadastro" class="rounded-1 btnSubmit">Cadastrar</button>
                         </form>
