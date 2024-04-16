@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.bean.Usuario;
+import model.dao.UsuarioDAO;
 
 /**
  *
@@ -30,7 +32,7 @@ public class LoginController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String nextPage = "/WEB-INF/jsp/login.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
@@ -48,7 +50,36 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String url = request.getServletPath();
+
+        if (url.equals("/logar")) {
+            String nextPage = "/WEB-INF/jsp/index.jsp";
+            Usuario usuario = new Usuario();
+            UsuarioDAO uDAO = new UsuarioDAO();
+
+            usuario.setEmail(request.getParameter("loginEmail"));
+            usuario.setSenha(request.getParameter("loginSenha"));
+
+            try {
+                if (uDAO.login(usuario.getEmail(), usuario.getSenha())) {
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                    dispatcher.forward(request, response);
+                } else {
+                    nextPage = "/WEB-INF/jsp/login.jsp";
+                    request.setAttribute("errorMessage", "Usuário ou senha inválidos");
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                    dispatcher.forward(request, response);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                nextPage = "/WEB-INF/jsp/login.jsp";
+                request.setAttribute("errorMessage", "Usuário ou senha inválidos");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                dispatcher.forward(request, response);
+            }
+        } else {
+            processRequest(request, response);
+        }
     }
 
     /**
@@ -62,7 +93,33 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String url = request.getServletPath();
+        if (url.equals("/cadastrar")) {
+            String nextPage = "/WEB-INF/jsp/index.jsp";
+            Usuario u = new Usuario();
+            UsuarioDAO uDAO = new UsuarioDAO();
+
+            u.setNome(request.getParameter("inputNome"));
+            u.setEmail(request.getParameter("signupEmail"));
+            u.setSenha(request.getParameter("signupSenha"));
+            u.setCpf(request.getParameter("inputCPF"));
+            u.setTelefone(request.getParameter("inputTelefone"));
+
+            System.out.println(request.getParameter("inputNome")+"\n"+request.getParameter("signupEmail")+"\n"+request.getParameter("signupSenha")+"\n"+request.getParameter("inputCPF")+"\n"+request.getParameter("inputTelefone"));
+            try {
+                uDAO.create(u);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                dispatcher.forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+                nextPage = "/WEB-INF/jsp/login.jsp";
+                request.setAttribute("errorMessage", "Algo deu errado. Tente novamente.");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                dispatcher.forward(request, response);
+            }
+        } else {
+            processRequest(request, response);
+        }
     }
 
     /**

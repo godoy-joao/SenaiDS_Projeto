@@ -7,8 +7,8 @@ create table usuario (
     nome varchar(100) not null,
     email varchar(100) not null,
     senha varchar(100) not null,
-    cpf char(11) not null,
-    telefone varchar(13)
+    cpf char(14) not null,
+    telefone varchar(15)
 );
 
 create table endereco (
@@ -121,3 +121,5 @@ JOIN produto p ON cp.produto = p.idProduto
 JOIN carrinho c ON cp.carrinho = c.idCarrinho
 JOIN usuario u ON c.usuario = u.idUsuario
 WHERE u.idUsuario = 2;
+
+select * from usuario;
