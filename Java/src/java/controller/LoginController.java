@@ -58,8 +58,8 @@ public class LoginController extends HttpServlet {
             Usuario usuario = new Usuario();
             UsuarioDAO uDAO = new UsuarioDAO();
 
-            usuario.setEmail(request.getParameter("loginEmail"));
-            usuario.setSenha(request.getParameter("loginSenha"));
+            usuario.setEmail(request.getParameter("email"));
+            usuario.setSenha(request.getParameter("senha"));
 
             try {
                 if (uDAO.login(usuario.getEmail(), usuario.getSenha())) {
@@ -106,8 +106,6 @@ public class LoginController extends HttpServlet {
             u.setCpf(request.getParameter("inputCPF"));
             u.setTelefone(request.getParameter("inputTelefone"));
             u.setNome(u.getNome().replaceAll("Ã£", "ã"));
-            System.out.println(u.getNome());
-            
             try {
                 uDAO.create(u);
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
