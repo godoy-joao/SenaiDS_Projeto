@@ -19,29 +19,31 @@
                 <div class="" id="logoDiv" style="width: 10vw;">
                     <img src="./res/logo.png" class="mw-100" alt="">
                 </div>
-                <div class="row w-100 align-items-center justify-content-center py-1" id="navBar" style="height: 40px">
-
-                    <div class="col-1 border border-1">
-                        <button>
+                <div class="row w-100 align-items-center justify-content-between py-1" id="navBar" style="height: 40px">                    
+                    <div class="col-1 m-0 p-0 h-100 d-flex justify-content-center">
+                        <div class="bg-light rounded-pill w-50 d-flex justify-content-center">
+                          <button class="border-0 bg-transparent">
                             <i class="fa-solid fa-bars"></i>
-                        </button>
+                        </button>  
+                        </div>
+                        
                     </div>
-                    <div class="col-5 border border-1 justify-self-center">
-                        <div class="row justify-content-center" id="searchBar">
-                            <div class="col-10 border border-1">
-                                <input type="search" class="border-0 w-100" style="outline: none;" name="search"
+                    <div class="col-8 border-0 rounded-pill bg-light justify-self-center h-100">
+                        <div class="row justify-content-center h-100" id="searchBar">
+                            <div class="col-10">
+                                <input type="search" class="border-0 w-100 h-100" style="outline: none;" name="search"
                                     id="inputSearch">
                             </div>
-                            <div class="col-2 border border-1 m-auto p-auto justify-content-center d-flex">
-                                <button class="border-0">
+                            <div class="col-2  m-0 p-auto justify-content-center d-flex">
+                                <button class="border-0 w-100 bg-transparent">
                                     <i class="fa-solid fa-magnifying-glass align-self-center"></i>
                                 </button>
 
                             </div>
                         </div>
                     </div>
-                    <div class="col-1 border border-1">
-                        <div class="row border border-1 d-flex flex-nowrap">
+                    <div class="col-1 border border-1 me-4 h-100">
+                        <div class="row border border-1 d-flex flex-nowrap justify-content-between">
                             <div class="col border border-1">
                                 <a href="./login">
                                     <i class="fa-solid fa-circle-user"></i>

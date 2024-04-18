@@ -5,6 +5,7 @@
  */
 package controller;
 
+import com.mysql.cj.util.StringUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -104,8 +105,9 @@ public class LoginController extends HttpServlet {
             u.setSenha(request.getParameter("signupSenha"));
             u.setCpf(request.getParameter("inputCPF"));
             u.setTelefone(request.getParameter("inputTelefone"));
-
-            System.out.println(request.getParameter("inputNome")+"\n"+request.getParameter("signupEmail")+"\n"+request.getParameter("signupSenha")+"\n"+request.getParameter("inputCPF")+"\n"+request.getParameter("inputTelefone"));
+            u.setNome(u.getNome().replaceAll("Ã£", "ã"));
+            System.out.println(u.getNome());
+            
             try {
                 uDAO.create(u);
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
