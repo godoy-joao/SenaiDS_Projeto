@@ -98,28 +98,7 @@ BEGIN
 END //
 
 DELIMITER //
-
-insert into usuario (nome, email, senha, cpf, telefone) values ("João Guilherme", "joaoguilherme-est@hotmail.com", "adbsktsa159", "12110404965", "43996755176");
-insert into usuario (nome, email, senha, cpf, telefone) values ("Felipe Augusto","felipe-est@hotmail.com", "adbsktsa1", "10148417981", "43991917299");
 insert into categoria (nome) values ("Tecnologia");
 insert into produto (nome, valor, desconto, categoria) values ("Mouse Gamer Redragon", 114.99, 0, 1);
 insert into produto (nome, valor, desconto, categoria) values ("Teclado Gamer Redragon", 239.99, 39.99, 1);
-insert into carrinho_produto(carrinho, produto) values (1,1),(1,2);
-insert into carrinho_produto (carrinho, produto) values (2,1);
-select * from usuario;
-select * from carrinho;
-select * from produto;
-SELECT p.*
-FROM carrinho_produto cp
-JOIN produto p ON cp.produto = p.idProduto
-JOIN carrinho c ON cp.carrinho = c.idCarrinho
-JOIN usuario u ON c.usuario = u.idUsuario
-WHERE u.idUsuario = 1;
-SELECT p.*
-FROM carrinho_produto cp
-JOIN produto p ON cp.produto = p.idProduto
-JOIN carrinho c ON cp.carrinho = c.idCarrinho
-JOIN usuario u ON c.usuario = u.idUsuario
-WHERE u.idUsuario = 2;
-
 select * from usuario;
