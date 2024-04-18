@@ -16,17 +16,7 @@
             </head>
 
             <body>
-                <h1>Catalogo de produtos</h1>
-                <div class="d-flex d-row gap-5">
-                    <c:forEach items="${produtos}" var="produto">
-                        <div id="${produto.idProduto}" class="border border-3 w-25 p-3 d-flex flex-column align-items-center">
-                            <p>${produto.nome}</p>
-                            <p>${produto.categoria}</p>
-                            <p>${produto.valor} - ${produto.desconto}</p>
-                            <p>${produto.valorFinal}</p>
-                        </div>
-                    </c:forEach>
-                </div>
+                
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

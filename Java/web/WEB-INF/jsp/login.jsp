@@ -34,7 +34,7 @@
                             <input type="email" name="email" id="loginEmail" placeholder="seuemail@example.com" required>
                             <label for="">Senha</label>
                             <input type="password" id="loginSenha" name="senha" placeholder="Digite sua senha" required>
-                            <button id="btnLogin" class="rounded-1 mt-3 btnSubmit">Acessar</button>
+                            <button id="btnLogin" type="submit" class="rounded-1 mt-3 btnSubmit">Acessar</button>
                         </form>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                             <label for="inputTelefone">Telefone</label>
                             <input type="tel" id="inputTelefone" class="input mb-3" name="inputTelefone"
                                 placeholder="(00) 90000-0000" required>
-                            <button id="btnCadastro" class="rounded-1 btnSubmit">Cadastrar</button>
+                            <button id="btnCadastro" type="submit" class="rounded-1 btnSubmit">Cadastrar</button>
                         </form>
                     </div>
                 </div>

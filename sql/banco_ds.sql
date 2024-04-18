@@ -97,8 +97,10 @@ BEGIN
     INSERT INTO carrinho (usuario) VALUES (NEW.idUsuario);
 END //
 
-DELIMITER //
+DELIMITER ;
 insert into categoria (nome) values ("Tecnologia");
 insert into produto (nome, valor, desconto, categoria) values ("Mouse Gamer Redragon", 114.99, 0, 1);
 insert into produto (nome, valor, desconto, categoria) values ("Teclado Gamer Redragon", 239.99, 39.99, 1);
+insert into produto (nome, valor, desconto, categoria) values ("Luminária", 129.99, 59.99, 1);
 select * from usuario;
+select * from produto
