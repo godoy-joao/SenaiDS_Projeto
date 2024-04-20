@@ -13,7 +13,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.bean.Categoria;
 import model.bean.Produto;
+import model.dao.CategoriaDAO;
 import model.dao.ProdutoDAO;
 
 /**
@@ -36,7 +38,11 @@ public class HomeController extends HttpServlet {
 
         ProdutoDAO produtosDAO = new ProdutoDAO();
         List<Produto> produtos = produtosDAO.listarTodos();
-
+        
+        CategoriaDAO cDAO = new CategoriaDAO();
+        List<Categoria> categorias = cDAO.listarTodos();
+        
+        request.setAttribute("categorias", categorias);
         request.setAttribute("produtos", produtos);
 
         String nextPage = "/WEB-INF/jsp/index.jsp";
