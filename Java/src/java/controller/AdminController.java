@@ -7,19 +7,20 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.bean.Produto;
-import model.dao.ProdutoDAO;
+import model.bean.Categoria;
+import model.dao.CategoriaDAO;
 
 /**
  *
- * @author Senai
+ * @author João Guilherme
  */
-public class ProdutoController extends HttpServlet {
+public class AdminController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,11 +33,10 @@ public class ProdutoController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProdutoDAO pdao = new ProdutoDAO();
-        Produto produto = pdao.readById(2);
-        System.out.println(produto);
-        request.setAttribute("produto", produto);
-        String nextPage = "/WEB-INF/jsp/produto.jsp";
+        CategoriaDAO cdao = new CategoriaDAO();
+        List<Categoria> categorias = cdao.listarTodos();
+        request.setAttribute("categorias", categorias);
+        String nextPage = "/WEB-INF/jsp/admin.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
     }
@@ -67,7 +67,10 @@ public class ProdutoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String url = request.getServletPath();
+        if (url.equals("/adicionar_produto")) {
+            
+        }
     }
 
     /**
