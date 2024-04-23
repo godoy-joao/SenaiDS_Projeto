@@ -72,7 +72,7 @@
                                             ${produto.valorFinal}
                                         </h5>
                                         <p class="card-text">${produto.nome}</p>
-                                        <a href="#" class="btn btn-primary">Comprar</a>
+                                        <a href="./produto/${produto.idProduto}" class="btn btn-primary">Comprar</a>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -82,14 +82,13 @@
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next bg-dark" type="button" data-bs-target="#carouselExample"
-                            style="width: 10%;" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <button class="carousel-control-next bg-dark" data-bs-theme="dark" type="button"
+                            data-bs-target="#carouselExample" style="width: 10%;" data-bs-slide="next">
+                            <span class="carousel-control-next-icon " data-bs-theme="dark" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
                 </c:forEach>
-
             </main>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

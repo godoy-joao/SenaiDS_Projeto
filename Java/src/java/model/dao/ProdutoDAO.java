@@ -165,7 +165,7 @@ public class ProdutoDAO {
             ResultSet rs = null;
 
             stmt = conexao.prepareStatement("SELECT * FROM produto WHERE idProduto = ?");
-
+            stmt.setInt(1, id);
             rs = stmt.executeQuery();
 
             if (rs.next()) {
@@ -183,6 +183,33 @@ public class ProdutoDAO {
             e.printStackTrace();
         }
         return p;
+    }
+
+    public List<Produto> listarTodosComDesconto() {
+        List<Produto> produtos = new ArrayList();
+
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+
+            stmt = conexao.prepareStatement("SELECT * FROM produto WHERE desconto > 0");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Produto p = new Produto(rs.getInt("idProduto"), rs.getInt("categoria"), rs.getString("nome"), rs.getFloat("valor"), rs.getFloat("desconto"), rs.getFloat("valorFinal"));
+                produtos.add(p);
+            }
+
+            rs.close();
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return produtos;
     }
 
     public void create(Produto p) {
